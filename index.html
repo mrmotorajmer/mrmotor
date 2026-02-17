@@ -3,125 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.R. MOTOR & PARTS | VIP Digital Card</title>
+    <title>M.R. MOTOR & PARTS | Super VIP</title>
     <style>
         :root {
             --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             --bg: #000000;
         }
-        body {
-            margin: 0; padding: 15px; background: var(--bg); color: white;
-            font-family: 'Segoe UI', Roboto, sans-serif; text-align: center; overflow-x: hidden;
-        }
+        body { margin: 0; padding: 15px; background: var(--bg); color: white; font-family: sans-serif; text-align: center; }
+        
+        /* VIP Look */
+        .firm-name { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.2rem; font-weight: 900; margin: 10px 0; }
+        
+        /* Small Icons Grid */
+        .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+        .icon-card { background: #111; border: 1px solid #bf953f; border-radius: 12px; padding: 10px 5px; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; }
+        .icon-card span { font-size: 0.65rem; margin-top: 5px; font-weight: bold; }
+        
+        /* Service Boxes */
+        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px; }
+        .s-box { background: var(--gold); color: black; padding: 15px 5px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; cursor: pointer; height: 60px; display: flex; align-items: center; justify-content: center; border: none; }
 
-        /* VIP Header */
-        .firm-header { padding: 20px 0; border-bottom: 1px solid #333; }
-        .firm-name {
-            background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            font-size: 2.2rem; font-weight: 900; margin: 0; filter: drop-shadow(0 0 5px gold);
-        }
-        .owner-sub { font-size: 0.9rem; color: #aaa; margin-top: 5px; }
+        /* Settings Gear */
+        .settings-btn { position: fixed; top: 15px; right: 15px; font-size: 25px; color: gold; z-index: 100; cursor: pointer; }
+        #settings-pane { display: none; position: fixed; top: 50px; right: 15px; background: #222; border: 1px solid gold; padding: 15px; border-radius: 10px; z-index: 101; }
+        .lang-btn { background: var(--gold); border: none; padding: 8px 12px; margin: 5px; border-radius: 5px; font-weight: bold; }
 
-        /* Icon Grid (Insta Style) */
-        .social-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 25px 0;
-        }
-        .icon-btn {
-            background: #111; border: 1px solid #bf953f; border-radius: 15px;
-            padding: 12px 5px; text-decoration: none; color: white; transition: 0.3s;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .icon-btn:active { transform: scale(0.9); background: #222; }
-        .icon-btn span { font-size: 0.65rem; font-weight: bold; margin-top: 8px; text-align: center; }
-        .icon-btn i { font-size: 1.6rem; }
-
-        /* Service Boxes (Small with Full Detail Pop-up) */
-        .service-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
-        .s-box {
-            background: var(--gold); color: black; padding: 10px 2px; border-radius: 8px;
-            font-size: 0.7rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 50px;
-        }
-
-        /* Working Settings Panel */
-        .gear-icon { position: fixed; top: 15px; right: 15px; font-size: 28px; cursor: pointer; color: gold; z-index: 1000; }
-        #settings-box {
-            display: none; position: fixed; top: 55px; right: 15px; background: #1a1a1a;
-            border: 1px solid gold; padding: 15px; border-radius: 12px; z-index: 1001;
-        }
-        .set-btn { background: var(--gold); border: none; padding: 8px 15px; margin: 5px; border-radius: 5px; font-weight: bold; cursor: pointer; }
-
-        /* Footer */
-        footer { margin-top: 30px; padding: 20px; border-top: 1px solid #222; font-size: 0.75rem; color: #555; }
-        .share-btn { background: var(--gold); color: black; padding: 12px 25px; border-radius: 30px; font-weight: bold; border: none; margin: 15px 0; cursor: pointer; }
+        /* Detail Modal (Pop-up) */
+        #detail-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; align-items: center; justify-content: center; }
+        .modal-content { background: #1a1a1a; border: 2px solid gold; width: 85%; max-height: 70%; padding: 20px; border-radius: 15px; overflow-y: auto; text-align: left; position: relative; }
+        .close-modal { color: gold; font-size: 30px; position: absolute; top: 10px; right: 15px; cursor: pointer; }
+        .modal-body { font-size: 0.95rem; line-height: 1.6; color: #eee; white-space: pre-wrap; }
+        
+        footer { margin-top: 30px; font-size: 0.75rem; color: #666; padding: 20px; border-top: 1px solid #222; }
     </style>
 </head>
-<body id="pgBody">
+<body>
 
-    <div class="gear-icon" onclick="toggleSet()">⚙️</div>
-    <div id="settings-box">
-        <p style="font-size: 0.8rem; margin: 0 0 10px 0;">Language / भाषा</p>
-        <button class="set-btn" onclick="setLang('hi')">हिन्दी</button>
-        <button class="set-btn" onclick="setLang('en')">English</button>
+    <div class="settings-btn" onclick="toggleSet()">⚙️</div>
+    <div id="settings-pane">
+        <p style="margin:0 0 10px; font-size:0.8rem;">Change Language</p>
+        <button class="lang-btn" onclick="changeL('hi')">हिन्दी</button>
+        <button class="lang-btn" onclick="changeL('en')">English</button>
     </div>
 
-    <div class="firm-header">
-        <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
-        <div class="owner-sub" id="ownerLine">मुकेश लोहार (7737750771) - अजमेर</div>
+    <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
+    <div id="subTxt" style="color: #aaa; font-size: 0.9rem;">मुकेश लोहार (7737750771) - अजमेर</div>
+
+    <div class="icon-grid">
+        <a href="https://wa.me/917737750771" class="icon-card">📞<span>WhatsApp Chat</span></a>
+        <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-card">📢<span id="waBtn">आज का न्यू अपडेट</span></a>
+        <a href="https://www.instagram.com/mukeshj16230" class="icon-card">🎁<span id="igBtn">आज का नया ऑफर</span></a>
+        <a href="https://www.instagram.com/mukeshj16230" class="icon-card">📸<span>Insta Profile</span></a>
+        <a href="https://drive.google.com/drive/folders/1sCrX4lepGOa1Wa4XoxSB4FOtednUnXOc" class="icon-card">📂<span id="drBtn">फोटो गैलरी</span></a>
+        <a href="https://youtube.com/@mr.indianlohar512" class="icon-btn icon-card">🔴<span>YouTube</span></a>
     </div>
 
-    <div class="social-grid">
-        <a href="https://wa.me/917737750771" class="icon-btn">🟢<span>WhatsApp Chat</span></a>
-        <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-btn" style="border-width:2px; box-shadow: 0 0 10px gold;">📢<span id="waUpd">आज का न्यू अपडेट</span></a>
-        <a href="https://www.instagram.com/mukeshj16230" class="icon-btn">🔥<span id="igOff">आज का नया ऑफर</span></a>
-        <a href="https://www.instagram.com/mukeshj16230" class="icon-btn">📸<span>Insta Profile</span></a>
-        <a href="https://drive.google.com/drive/folders/1sCrX4lepGOa1Wa4XoxSB4FOtednUnXOc" class="icon-btn">📂<span id="galTxt">फोटो गैलरी</span></a>
-        <a href="https://youtube.com/@mr.indianlohar512" class="icon-btn">🔴<span>YouTube</span></a>
-    </div>
-
-    <div style="font-size: 0.8rem; color: gold; font-weight: bold; margin-top: 10px;" id="serTitle">हमारी सेवाएं (टच करें)</div>
+    <h3 id="servTitle" style="color: gold; margin-top: 20px;">हमारी सेवाएं (टच करें)</h3>
     
-    <div class="service-container">
-        <div class="s-box" onclick="alert('स्क्रैप गाड़ियाँ: 15 साल पुरानी गाड़ियाँ, बेस्ट रेट, आरसी कैंसिल गारंटी')">स्क्रैप गाड़ियाँ</div>
-        <div class="service-box s-box" onclick="alert('रनिंग गाड़ियाँ: खरीद-बेच, अच्छी कंडीशन, ऊंचे मॉडल')">रनिंग गाड़ियाँ</div>
-        <div class="service-box s-box" onclick="alert('हैवी मशीनरी: ट्रक, डंपर, ट्रेलर, जेसीबी, माइंस मशीनरी')">हैवी मशीनरी</div>
-        <div class="service-box s-box" onclick="alert('फैक्ट्री स्क्रैप: पुरानी मिलें, माइंस, हैवी मेटल और पुर्जे')">फैक्ट्री स्क्रैप</div>
-        <div class="service-box s-box" onclick="alert('मेटल एवं भानगढ़: तांबा, पीतल, लोहा, एल्युमीनियम, खुला स्क्रैप')">मेटल स्क्रैप</div>
-        <div class="service-box s-box" onclick="alert('घरेलू एवं ऑफिस: अलमारी, फ्रिज, एसी, कूलर, खिड़कियां, ऑफिस फर्नीचर')">घरेलू/ऑफिस</div>
+    <div class="service-grid">
+        <div class="s-box" onclick="showInfo(0)">स्क्रैप गाड़ियाँ</div>
+        <div class="s-box" onclick="showInfo(1)">रनिंग गाड़ियाँ</div>
+        <div class="s-box" onclick="showInfo(2)">हैवी मशीनरी</div>
+        <div class="s-box" onclick="showInfo(3)">फैक्ट्री स्क्रैप</div>
+        <div class="s-box" onclick="showInfo(4)">मेटल एवं भानगढ़</div>
+        <div class="s-box" onclick="showInfo(5)">घरेलू एवं ऑफिस</div>
     </div>
 
-    <button class="share-btn" onclick="shareCard()">SHARE PROFILE 🔗</button>
+    <div id="detail-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeInfo()">&times;</span>
+            <div id="infoBody" class="modal-body"></div>
+        </div>
+    </div>
 
     <footer>
-        <div id="docInfo">BRN: 8005700056000174 | MSME: UDYAM-RJ-01-0008453</div>
+        <div id="footerInfo">BRN: 8005700056000174 | MSME: UDYAM-RJ-01-0008453</div>
         <p>© 2026 M.R. Motor & Parts, Ajmer</p>
     </footer>
 
     <script>
-        function toggleSet() {
-            var s = document.getElementById('settings-box');
-            s.style.display = (s.style.display === 'block') ? 'none' : 'block';
-        }
-
-        function setLang(lang) {
-            if(lang === 'en') {
-                document.getElementById('ownerLine').innerText = "Mukesh Lohar (7737750771) - Ajmer";
-                document.getElementById('waUpd').innerText = "Today's New Update";
-                document.getElementById('igOff').innerText = "Today's New Offer";
-                document.getElementById('galTxt').innerText = "Stock Gallery";
-                document.getElementById('serTitle').innerText = "Our Services (Touch)";
-            } else {
-                location.reload(); 
+        let currentLang = 'hi';
+        const data = {
+            hi: {
+                wa: "आज का न्यू अपडेट", ig: "आज का नया ऑफर", dr: "फोटो गैलरी", ser: "हमारी सेवाएं (टच करें)",
+                info: [
+                    "स्क्रैप गाड़ियाँ जानकारी:\n1. हम 15 साल से पुरानी हर प्रकार की गाड़ी (कार, जीप, वैन) खरीदते हैं।\n2. आपको बाजार से सबसे ऊंचे रेट दिए जाएंगे।\n3. हम आरसी (RC) कैंसिल कराने की 100% लिखित गारंटी देते हैं।\n4. गाड़ी जहाँ खड़ी है, वहीं से उठाने की सुविधा उपलब्ध है।\n5. पेमेंट तुरंत नकद या ऑनलाइन किया जाता है।\n6. गाड़ी के सभी कागजात का पूरा ध्यान रखा जाता है।\n7. अजमेर और आसपास के क्षेत्र में सबसे पुरानी फर्म।\n8. आज ही अपनी पुरानी गाड़ी का सौदा करें।",
+                    "रनिंग गाड़ियाँ जानकारी:\n1. अच्छी कंडीशन वाली पुरानी गाड़ियों की खरीद-बेच।\n2. ऊंचे मॉडल की गाड़ियाँ उचित दाम पर उपलब्ध।\n3. गाड़ी का पूरा वेरिफिकेशन और पेपर वर्क हम करते हैं।\n4. ग्राहकों के लिए फाइनेंस और ट्रांसफर में पूरी मदद।\n5. साफ-सुथरी और बिना एक्सीडेंट वाली गाड़ियों का स्टॉक।",
+                    "हैवी मशीनरी जानकारी:\n1. पुराने ट्रक, डंपर, ट्रेलर और बस का स्क्रैप।\n2. जेसीबी (JCB), लोडर और माइंस की भारी मशीनरी की खरीद।\n3. बड़ी मशीनों को काटने और उठाने के लिए हमारी अपनी टीम है।\n4. हैवी लोहे और इंजन पार्ट्स का सही मूल्यांकन।\n5. माइनिंग और कंस्ट्रक्शन कंपनियों के लिए विशेष सेवा।",
+                    "फैक्ट्री स्क्रैप जानकारी:\n1. बंद पड़ी मिलें और फैक्ट्रियां खरीदने के एक्सपर्ट।\n2. भारी मशीनरी, बॉयलर, और लोहे के स्ट्रक्चर का काम।\n3. फैक्ट्री खाली करने और मलबा हटाने की पूरी जिम्मेदारी।\n4. टेंडर और नीलामी में भागीदारी की सुविधा।\n5. बड़े स्तर पर स्क्रैप लोडिंग और ट्रांसपोर्टेशन।",
+                    "मेटल एवं भानगढ़ जानकारी:\n1. तांबा (Copper), पीतल (Brass) और एल्युमीनियम की खरीद।\n2. भारी लोहा, स्टील और ढलाई वाला माल थोक भाव में।\n3. रोज के बदलते भाव के अनुसार सबसे सटीक रेट।\n4. तौल (Weight) में 100% पारदर्शिता और ईमानदारी।\n5. छोटे और बड़े सभी प्रकार के व्यापारियों के लिए स्टॉक।",
+                    "घरेलू एवं ऑफिस जानकारी:\n1. पुरानी अलमारी, फ्रिज, एसी (AC) और कूलर का स्क्रैप।\n2. ऑफिस का पुराना फर्नीचर, केबिन और इलेक्ट्रॉनिक सामान।\n3. घर की सफाई या शिफ्टिंग के दौरान निकलने वाला कबाड़।\n4. होटल और रेस्टोरेंट का पुराना किचन सामान।\n5. खिड़कियां, दरवाजे और लोहे की रेलिंग की खरीद।"
+                ]
+            },
+            en: {
+                wa: "Today's New Update", ig: "Today's New Offer", dr: "Stock Gallery", ser: "Our Services (Touch)",
+                info: [
+                    "Scrap Vehicles Details:\n1. We buy all 15+ year old vehicles (Car, Jeep, Van).\n2. Best market rates guaranteed.\n3. 100% Guarantee for RC Cancellation.\n4. Pickup service from your location.\n5. Instant cash or online payment.\n6. Legal paper handling with expert care.\n7. Oldest and trusted firm in Ajmer region.\n8. Contact us to sell your old vehicle today.",
+                    "Running Vehicles:\n1. Buying and selling of well-maintained old cars.\n2. High-model vehicles available at fair prices.\n3. Complete verification and paperwork handled by us.\n4. Support for finance and ownership transfer.\n5. Stock of non-accidental, clean vehicles only.",
+                    "Heavy Machinery:\n1. Scrap for old Trucks, Dumpers, Trailers, and Buses.\n2. Purchase of JCB, Loaders, and Mining Machinery.\n3. Professional team for cutting and lifting heavy units.\n4. Accurate valuation of heavy iron and engine parts.\n5. Specialized services for Mining and Construction firms.",
+                    "Factory Scrap:\n1. Experts in buying closed mills and factories.\n2. Handling heavy machinery, boilers, and structures.\n3. Full responsibility for factory clearing.\n4. Tender and auction participation support.\n5. Large scale scrap loading and transport.",
+                    "Metal & Scrap:\n1. Purchase of Copper, Brass, and Aluminum.\n2. Bulk rates for Heavy Iron, Steel, and Cast iron.\n3. Transparent pricing as per daily market rates.\n4. 100% honesty in weight measurements.\n5. Stock available for all scale of traders.",
+                    "Home & Office:\n1. Scrap for old Cupboards, Fridge, AC, and Coolers.\n2. Old Office furniture, cabins, and electronics.\n3. Scrap collection during home shifting or cleaning.\n4. Old Kitchen equipment from Hotels/Restaurants.\n5. Buying of windows, doors, and iron railings."
+                ]
             }
+        };
+
+        function toggleSet() { document.getElementById('settings-pane').style.display = (document.getElementById('settings-pane').style.display === 'block') ? 'none' : 'block'; }
+        
+        function changeL(l) {
+            currentLang = l;
+            document.getElementById('waBtn').innerText = data[l].wa;
+            document.getElementById('igBtn').innerText = data[l].ig;
+            document.getElementById('drBtn').innerText = data[l].dr;
+            document.getElementById('servTitle').innerText = data[l].ser;
             toggleSet();
         }
 
-        function shareCard() {
-            if (navigator.share) {
-                navigator.share({ title: 'M.R. Motor & Parts', url: window.location.href });
-            } else {
-                alert("Link Copied!");
-            }
+        function showInfo(index) {
+            document.getElementById('infoBody').innerText = data[currentLang].info[index];
+            document.getElementById('detail-modal').style.display = 'flex';
         }
+
+        function closeInfo() { document.getElementById('detail-modal').style.display = 'none'; }
     </script>
 </body>
 </html>
