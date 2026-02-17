@@ -3,106 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.R. MOTOR & PARTS | अजमेर</title>
+    <title>M.R. MOTOR & PARTS | मुकेश लोहार</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --gold: #ffcc00; --bg: #0b101a; --glass: rgba(255, 255, 255, 0.1); --royal: #002366; }
+        :root { --gold: #ffcc00; --neon: #00f2ff; --bg: #050a14; --glass: rgba(255, 255, 255, 0.08); }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #fff; text-align: center; overflow-x: hidden; }
         
-        /* सेटिंग बटन (Language) */
-        .settings-btn { position: fixed; top: 20px; right: 20px; z-index: 1001; background: var(--gold); color: #000; padding: 10px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 0 15px var(--gold); }
+        /* सितारों वाला एनिमेटेड बैकग्राउंड */
+        .stars-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #111e36 0%, #050a14 100%); overflow: hidden; }
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: twinkle var(--d) infinite ease-in-out; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+
+        /* 3D हेडर */
+        header { padding: 60px 20px; border-bottom: 2px solid var(--gold); background: linear-gradient(to bottom, rgba(0,35,102,0.5), transparent); }
+        .logo-3d { font-size: 2.8rem; color: var(--gold); text-transform: uppercase; font-weight: 900; letter-spacing: 2px;
+            text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+            animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* VIP सोशल बटन */
+        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 20px; max-width: 500px; margin: 0 auto; }
+        .s-btn { padding: 15px; border-radius: 15px; text-decoration: none; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .s-btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
+        .b-offer { grid-column: span 2; background: linear-gradient(45deg, #ff0000, #ffcc00); color: #000; animation: glow 1.5s infinite alternate; }
+        @keyframes glow { from { box-shadow: 0 0 5px #ffcc00; } to { box-shadow: 0 0 25px #ffcc00; } }
+
+        /* सर्विस 3D बॉक्स */
+        .services-container { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 20px; max-width: 600px; margin: 0 auto; }
+        .service-card { background: var(--glass); border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); padding: 25px; text-align: left; position: relative; backdrop-filter: blur(10px); transition: 0.4s; }
+        .service-card:hover { border-color: var(--gold); transform: perspective(1000px) rotateX(5deg); }
+        .service-card i { font-size: 2rem; color: var(--gold); position: absolute; top: 20px; right: 20px; opacity: 0.5; }
+        .service-card h3 { color: var(--neon); margin: 0 0 10px 0; font-size: 1.5rem; text-shadow: 0 0 10px var(--neon); }
+        .service-card p { margin: 0; color: #ddd; line-height: 1.6; font-size: 1.05rem; }
+
+        /* सेटिंग्स और फ्लोटिंग बटन */
+        .fab-settings { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 0 20px var(--gold); cursor: pointer; z-index: 1000; }
         
-        /* 3D गोल्ड हेडर */
-        header { padding: 50px 20px; background: linear-gradient(180deg, var(--royal), var(--bg)); border-bottom: 3px solid var(--gold); }
-        header h1 { 
-            font-size: 3rem; color: var(--gold); margin: 0; 
-            text-shadow: 2px 2px 0px #856404, 4px 4px 20px rgba(255,254,0,0.8);
-            transform: perspective(500px) rotateX(10deg); font-weight: 900;
-        }
-        header p { font-size: 1.4rem; font-weight: bold; margin-top: 10px; }
-
-        /* धमाका बटन */
-        .main-btns { display: grid; gap: 15px; max-width: 500px; margin: -25px auto 30px; padding: 20px; }
-        .btn { padding: 18px; border-radius: 20px; text-decoration: none; color: #fff; font-weight: bold; font-size: 1.1rem; box-shadow: 0 6px 0 #000; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
-        .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #000; }
-        .b-offer { background: linear-gradient(#ffcc00, #b88b1b); color: #000; border: 2px solid #fff; animation: pulse 2s infinite; }
-        .b-wa { background: linear-gradient(#2ecc71, #27ae60); }
-        .b-yt { background: linear-gradient(#ff0000, #cc0000); }
-        .b-ig { background: linear-gradient(#f09433, #e1306c); }
-
-        /* सर्विस बॉक्स */
-        .services { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; max-width: 600px; margin: 0 auto; }
-        .s-box { background: var(--glass); padding: 20px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s; }
-        .s-box:hover { border-color: var(--gold); background: rgba(255,255,255,0.2); }
-        .s-box i { font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; display: block; filter: drop-shadow(0 0 8px var(--gold)); }
-
-        /* मॉडल विंडों */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #161b22; padding: 30px; border-radius: 25px; border: 2px solid var(--gold); max-width: 450px; width: 100%; position: relative; text-align: left; }
-
-        footer { background: #000; padding: 40px 20px; border-top: 2px solid #333; margin-top: 40px; }
-        .reg-info { font-size: 0.9rem; color: var(--gold); margin-bottom: 20px; border: 1px dashed var(--gold); padding: 10px; border-radius: 10px; }
-
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        footer { background: #000; padding: 40px 20px; border-top: 1px solid #333; }
+        .trust-info { border: 1px dashed var(--gold); padding: 15px; border-radius: 10px; display: inline-block; margin-bottom: 20px; color: var(--gold); }
     </style>
 </head>
 <body>
 
-<div class="settings-btn" onclick="openLang()"><i class="fas fa-cog"></i></div>
+<div class="stars-bg" id="starField"></div>
 
 <header>
-    <h1 id="mainTitle">M.R. MOTOR & PARTS</h1>
-    <p id="subTitle">अजमेर का नं. 1 कबाड़ डीलर</p>
+    <div class="logo-3d">M.R. MOTOR & PARTS</div>
+    <p style="color: #00f2ff; font-weight: bold; font-size: 1.2rem;">अजमेर की विश्वसनीय स्क्रैप फर्म</p>
 </header>
 
-<div class="main-btns">
-    <a href="https://whatsapp.com/channel/0029VaRQWeM419emE2K" target="_blank" class="btn b-offer"><i class="fas fa-star"></i> धमाका ऑफर देखें</a>
-    <a href="https://wa.me/917737750771" class="btn b-wa"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
-    <a href="https://www.instagram.com/mukeshj16230" target="_blank" class="btn b-ig"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://youtube.com/@mr.indianlohar512" target="_blank" class="btn b-yt"><i class="fab fa-youtube"></i> YouTube</a>
-    <a href="https://drive.google.com/drive/folders/1sCrX41epG6a1Wa4Xox5B4F0TedvuWk0C" target="_blank" class="btn" style="background: #4285f4;"><i class="fab fa-google-drive"></i> गैलरी (फोटो)</a>
+<div class="social-grid">
+    <a href="https://whatsapp.com/channel/0029VaRQWeM419emE2K5B40p" target="_blank" class="s-btn b-offer"><i class="fas fa-bullhorn"></i> आज का धमाकेदार ऑफर (Channel)</a>
+    <a href="https://wa.me/917737750771" class="s-btn" style="background: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
+    <a href="https://youtube.com/@mr.indianlohar512" target="_blank" class="s-btn" style="background: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>
+    <a href="https://www.instagram.com/mukeshj16230" target="_blank" class="s-btn" style="background: linear-gradient(45deg, #f09433, #e1306c);"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://drive.google.com/drive/folders/1sCrX41epG6a1Wa4Xox5B4F0TedvuWk0C" target="_blank" class="s-btn" style="background: #4285F4;"><i class="fas fa-images"></i> काम की गैलरी</a>
 </div>
 
-<div class="services">
-    <div class="s-box" onclick="showDetail('पुरानी गाड़ियाँ', '● हम ट्रक, बस, ट्रोला और कार कबाड़ में खरीदते हैं।\n● 15 साल पुरानी गाड़ियों का पक्का काम।')">
-        <i class="fas fa-truck-moving"></i> <h3 id="s1">पुरानी गाड़ियाँ</h3>
+<div class="services-container">
+    <div class="service-card">
+        <i class="fas fa-recycle"></i>
+        <h3>1. स्क्रैप गाड़ियाँ (15 साल पुरानी)</h3>
+        <p>हम पुरानी 15 साल पुरानी गाड़ियाँ बेस्ट रेट पर खरीदते हैं। <b>आरसी कैंसिल लेटर</b> की सुविधा और उचित स्क्रैप मूल्य।</p>
     </div>
-    <div class="s-box" onclick="showDetail('स्पेयर पार्ट्स', '● बोलेरो, पिकअप और टाटा जैसे सभी चालू पार्ट्स उपलब्ध।\n● उचित दामों पर पुराने ओरिजिनल पार्ट्स।')">
-        <i class="fas fa-car"></i> <h3 id="s2">स्पेयर पार्ट्स</h3>
+    <div class="service-card">
+        <i class="fas fa-car-side"></i>
+        <h3>2. रनिंग गाड़ियाँ</h3>
+        <p>अच्छी कंडीशन और ऊंचे मॉडल की गाड़ियाँ खरीदने और बेचने के लिए संपर्क करें। हम रनिंग गाड़ियों की पूरी जानकारी देते हैं।</p>
     </div>
-    <div class="s-box" onclick="showDetail('मेटल स्क्रैप', '● पुराना लोहा, तांबा, पीतल, एल्युमीनियम।\n● फैक्ट्री नीलामी (Auction) का भारी सामान।')">
-        <i class="fas fa-coins"></i> <h3 id="s3">मेटल स्क्रैप</h3>
+    <div class="service-card">
+        <i class="fas fa-truck-moving"></i>
+        <h3>3. हैवी गाड़ियाँ (कमर्शियल)</h3>
+        <p>ट्रक, डंपर, ट्रेलर, घोड़े, ट्रॉली और जेसीबी जैसी भारी मशीनरी गाड़ियाँ खरीदने-बेचने के लिए सबसे बेस्ट जगह।</p>
     </div>
-    <div class="s-box" onclick="showDetail('RTO जिम्मेदारी', '● हम पुरानी गाड़ियों का लोहा और कागज़ातों की पूरी कानूनी जिम्मेदारी लेते हैं।\n● आरसी कटवाने की सुविधा।')">
-        <i class="fas fa-file-contract"></i> <h3 id="s4">RTO जिम्मेदारी</h3>
+    <div class="service-card">
+        <i class="fas fa-industry"></i>
+        <h3>4. फैक्ट्री एवं माइंस स्क्रैप</h3>
+        <p>पुरानी मिलें, माइंस और फैक्ट्रियों का पूरा स्क्रैप, मशीनरी, पुर्जे और हैवी मेटल का सारा सामान हम खरीदते हैं।</p>
+    </div>
+    <div class="service-card">
+        <i class="fas fa-coins"></i>
+        <h3>5. मेटल एवं भानगढ़</h3>
+        <p>तांबा, पीतल, लोहा, एल्युमीनियम और हर तरह का खुला स्क्रैप। पुराने भानगढ़ की ऊँची कीमत पाएं।</p>
+    </div>
+    <div class="service-card">
+        <i class="fas fa-home"></i>
+        <h3>6. घरेलू एवं ऑफिस सामान</h3>
+        <p>पुराना लोहा, अलमारी, फ्रिज, एसी, कूलर, पंखे, खिड़कियां, गेट और ऑफिस का सारा फर्नीचर हम खरीदते हैं।</p>
     </div>
 </div>
 
 <footer>
-    <div class="reg-info">
-        <b>BRN:</b> 8005700056000174 <br>
-        <b>MSME:</b> UDYAM-RJ-01-0008453
+    <div class="trust-info">
+        <b>BRN:</b> 8005700056000174 | <b>MSME:</b> UDYAM-RJ-01-0008453
     </div>
-    <p><b>मुकेश लोहार</b> - 8005700056</p>
+    <p><b>मालिक: मुकेश लोहार</b> - 8005700056</p>
     <p>📍 नाकामदार, गुलाबवाड़ी, लोहार की पुलिया, अजमेर</p>
 </footer>
 
-<div id="infoModal" class="modal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <h2 id="modalTitle" style="color:var(--gold)"></h2>
-        <p id="modalDesc" style="white-space: pre-line; line-height: 1.6;"></p>
-        <button onclick="document.getElementById('infoModal').style.display='none'" style="background:var(--gold); border:none; padding:10px 20px; border-radius:10px; font-weight:bold; cursor:pointer; width:100%">बंद करें</button>
-    </div>
-</div>
+<div class="fab-settings" onclick="openMenu()"><i class="fas fa-cog"></i></div>
 
 <script>
-    function showDetail(title, desc) {
-        document.getElementById('modalTitle').innerText = title;
-        document.getElementById('modalDesc').innerText = desc;
-        document.getElementById('infoModal').style.display = 'flex';
+    // सितारे बनाने की कोडिंग
+    const field = document.getElementById('starField');
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.width = star.style.height = Math.random() * 3 + 'px';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.setProperty('--d', Math.random() * 3 + 2 + 's');
+        field.appendChild(star);
     }
-    function openLang() {
-        alert("सेटिंग्स: आप जल्द ही यहाँ से भाषा और रंग बदल पाएंगे!");
+    function openMenu() {
+        alert("सेटिंग्स: यहाँ से आप भाषा बदल सकते हैं और वेबसाइट शेयर कर सकते हैं!");
     }
 </script>
 
