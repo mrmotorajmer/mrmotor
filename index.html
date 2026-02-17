@@ -3,234 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.R. MOTOR & PARTS | VIP Digital Profile</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>M.R. MOTOR & PARTS | VIP Digital Card</title>
     <style>
         :root {
             --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            --black-matte: #0a0a0a;
-            --grey-dark: #2c2c2c;
-            --white: #ffffff;
+            --bg: #000000;
         }
-
-        * { box-sizing: border-box; transition: all 0.4s ease; }
-
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--black-matte);
-            color: var(--white);
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            overflow-x: hidden;
+            margin: 0; padding: 15px; background: var(--bg); color: white;
+            font-family: 'Segoe UI', Roboto, sans-serif; text-align: center; overflow-x: hidden;
         }
 
-        /* --- 3D Header --- */
-        .header-section {
-            padding: 60px 20px;
-            background: radial-gradient(circle, #222, #000);
-            border-bottom: 2px solid #bf953f;
-        }
-
+        /* VIP Header */
+        .firm-header { padding: 20px 0; border-bottom: 1px solid #333; }
         .firm-name {
-            background: var(--gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 3.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin: 0;
-            filter: drop-shadow(0 5px 15px rgba(191, 149, 63, 0.4));
-            animation: float3D 4s infinite ease-in-out;
+            background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 2.2rem; font-weight: 900; margin: 0; filter: drop-shadow(0 0 5px gold);
+        }
+        .owner-sub { font-size: 0.9rem; color: #aaa; margin-top: 5px; }
+
+        /* Icon Grid (Insta Style) */
+        .social-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 25px 0;
+        }
+        .icon-btn {
+            background: #111; border: 1px solid #bf953f; border-radius: 15px;
+            padding: 12px 5px; text-decoration: none; color: white; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .icon-btn:active { transform: scale(0.9); background: #222; }
+        .icon-btn span { font-size: 0.65rem; font-weight: bold; margin-top: 8px; text-align: center; }
+        .icon-btn i { font-size: 1.6rem; }
+
+        /* Service Boxes (Small with Full Detail Pop-up) */
+        .service-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .s-box {
+            background: var(--gold); color: black; padding: 10px 2px; border-radius: 8px;
+            font-size: 0.7rem; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; height: 50px;
         }
 
-        @keyframes float3D {
-            0%, 100% { transform: perspective(500px) rotateX(0deg) translateY(0); }
-            50% { transform: perspective(500px) rotateX(10deg) translateY(-10px); }
+        /* Working Settings Panel */
+        .gear-icon { position: fixed; top: 15px; right: 15px; font-size: 28px; cursor: pointer; color: gold; z-index: 1000; }
+        #settings-box {
+            display: none; position: fixed; top: 55px; right: 15px; background: #1a1a1a;
+            border: 1px solid gold; padding: 15px; border-radius: 12px; z-index: 1001;
         }
+        .set-btn { background: var(--gold); border: none; padding: 8px 15px; margin: 5px; border-radius: 5px; font-weight: bold; cursor: pointer; }
 
-        /* --- VIP Buttons (Gold & Black) --- */
-        .links-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 40px 20px;
-        }
-
-        .vip-btn {
-            background: var(--gold);
-            color: #000;
-            padding: 15px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            min-width: 260px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            border: 1px solid transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .vip-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 25px #fcf6ba;
-            filter: brightness(1.1);
-        }
-
-        .insta-btn {
-            animation: pulseGlow 2s infinite;
-            border: 2px solid #fff;
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 5px gold; }
-            50% { box-shadow: 0 0 25px #ff4500; }
-            100% { box-shadow: 0 0 5px gold; }
-        }
-
-        /* --- Service Boxes --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            padding: 40px;
-        }
-
-        .service-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #bf953f;
-            padding: 30px;
-            border-radius: 15px;
-            cursor: pointer;
-        }
-
-        .service-box:hover {
-            background: var(--gold);
-            color: black;
-            transform: translateY(-10px) rotateY(10deg);
-        }
-
-        /* --- Working Settings Gear --- */
-        .settings-icon {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 35px;
-            cursor: pointer;
-            z-index: 1000;
-            color: #ffbf00;
-        }
-
-        #settings-menu {
-            display: none;
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            background: #1a1a1a;
-            border: 2px solid #bf953f;
-            padding: 20px;
-            border-radius: 12px;
-            z-index: 999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .menu-btn {
-            background: var(--gold);
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: #000;
-            padding: 60px 20px;
-            border-top: 2px solid #333;
-        }
-
-        .doc-text { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
+        /* Footer */
+        footer { margin-top: 30px; padding: 20px; border-top: 1px solid #222; font-size: 0.75rem; color: #555; }
+        .share-btn { background: var(--gold); color: black; padding: 12px 25px; border-radius: 30px; font-weight: bold; border: none; margin: 15px 0; cursor: pointer; }
     </style>
 </head>
-<body id="page-body">
+<body id="pgBody">
 
-    <div class="settings-icon" onclick="toggleMenu()">⚙️</div>
-    <div id="settings-menu">
-        <p id="menu-label">Settings / सेटिंग्स</p>
-        <button class="menu-btn" onclick="setLang('hi')">हिन्दी</button>
-        <button class="menu-btn" onclick="setLang('en')">English</button>
-        <hr>
-        <button class="menu-btn" onclick="setTheme('grey')">ग्रे थीम</button>
-        <button class="menu-btn" onclick="setTheme('black')">ब्लैक थीम</button>
+    <div class="gear-icon" onclick="toggleSet()">⚙️</div>
+    <div id="settings-box">
+        <p style="font-size: 0.8rem; margin: 0 0 10px 0;">Language / भाषा</p>
+        <button class="set-btn" onclick="setLang('hi')">हिन्दी</button>
+        <button class="set-btn" onclick="setLang('en')">English</button>
     </div>
 
-    <header class="header-section">
+    <div class="firm-header">
         <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
-        <h2 id="owner-name">मालिक: मुकेश लोहार (7737750771)</h2>
-        <p id="location">अजमेर, राजस्थान</p>
-    </header>
-
-    <div class="links-container">
-        <a href="https://wa.me/917737750771" class="vip-btn">WHATSAPP CHAT</a>
-        <a href="https://www.instagram.com/mukeshj16230" class="vip-btn insta-btn">🔥 आज की अपडेट (INSTA)</a>
-        <a href="https://drive.google.com/drive/folders/1sCrX41epG6a1Wa4Xox5B4F0TedvuWk0C" class="vip-btn">PHOTO GALLERY</a>
-        <a href="https://whatsapp.com/channel/0029VaRQWeM419emE2K5B40p" class="vip-btn">धमाका ऑफर</a>
-        <a href="https://youtube.com/@mr.indianlohar512" class="vip-btn">YOUTUBE</a>
-        <a href="https://www.facebook.com/mukesh.lohar.16230" class="vip-btn">FACEBOOK</a>
+        <div class="owner-sub" id="ownerLine">मुकेश लोहार (7737750771) - अजमेर</div>
     </div>
 
-    <h2 id="service-head">हमारी मुख्य सेवाएं</h2>
-    <div class="services-grid">
-        <div class="service-box" onclick="alert('15 साल पुरानी गाड़ियाँ, बेस्ट रेट, आरसी कैंसिल गारंटी')">
-            <h3>स्क्रैप गाड़ियाँ</h3>
-            <p>15+ साल पुरानी गाड़ियाँ</p>
-        </div>
-        <div class="service-box" onclick="alert('खरीद-बेच, अच्छी कंडीशन, ऊंचे मॉडल')">
-            <h3>रनिंग गाड़ियाँ</h3>
-            <p>बेहतरीन कंडीशन मॉडल</p>
-        </div>
-        <div class="service-box" onclick="alert('ट्रक, डंपर, ट्रेलर, जेसीबी, माइंस मशीनरी')">
-            <h3>हैवी मशीनरी</h3>
-            <p>ट्रक, डंपर, JCB</p>
-        </div>
+    <div class="social-grid">
+        <a href="https://wa.me/917737750771" class="icon-btn">🟢<span>WhatsApp Chat</span></a>
+        <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-btn" style="border-width:2px; box-shadow: 0 0 10px gold;">📢<span id="waUpd">आज का न्यू अपडेट</span></a>
+        <a href="https://www.instagram.com/mukeshj16230" class="icon-btn">🔥<span id="igOff">आज का नया ऑफर</span></a>
+        <a href="https://www.instagram.com/mukeshj16230" class="icon-btn">📸<span>Insta Profile</span></a>
+        <a href="https://drive.google.com/drive/folders/1sCrX4lepGOa1Wa4XoxSB4FOtednUnXOc" class="icon-btn">📂<span id="galTxt">फोटो गैलरी</span></a>
+        <a href="https://youtube.com/@mr.indianlohar512" class="icon-btn">🔴<span>YouTube</span></a>
     </div>
+
+    <div style="font-size: 0.8rem; color: gold; font-weight: bold; margin-top: 10px;" id="serTitle">हमारी सेवाएं (टच करें)</div>
+    
+    <div class="service-container">
+        <div class="s-box" onclick="alert('स्क्रैप गाड़ियाँ: 15 साल पुरानी गाड़ियाँ, बेस्ट रेट, आरसी कैंसिल गारंटी')">स्क्रैप गाड़ियाँ</div>
+        <div class="service-box s-box" onclick="alert('रनिंग गाड़ियाँ: खरीद-बेच, अच्छी कंडीशन, ऊंचे मॉडल')">रनिंग गाड़ियाँ</div>
+        <div class="service-box s-box" onclick="alert('हैवी मशीनरी: ट्रक, डंपर, ट्रेलर, जेसीबी, माइंस मशीनरी')">हैवी मशीनरी</div>
+        <div class="service-box s-box" onclick="alert('फैक्ट्री स्क्रैप: पुरानी मिलें, माइंस, हैवी मेटल और पुर्जे')">फैक्ट्री स्क्रैप</div>
+        <div class="service-box s-box" onclick="alert('मेटल एवं भानगढ़: तांबा, पीतल, लोहा, एल्युमीनियम, खुला स्क्रैप')">मेटल स्क्रैप</div>
+        <div class="service-box s-box" onclick="alert('घरेलू एवं ऑफिस: अलमारी, फ्रिज, एसी, कूलर, खिड़कियां, ऑफिस फर्नीचर')">घरेलू/ऑफिस</div>
+    </div>
+
+    <button class="share-btn" onclick="shareCard()">SHARE PROFILE 🔗</button>
 
     <footer>
-        <div class="doc-text" id="doc-info">
-            BRN: 8005700056000174 | MSME: UDYAM-RJ-01-0008453
-        </div>
-        <p>© 2026 M.R. Motor & Parts - मुकेश लोहार</p>
-        <button class="menu-btn" onclick="copyURL()">शेयर प्रोफाइल 🔗</button>
+        <div id="docInfo">BRN: 8005700056000174 | MSME: UDYAM-RJ-01-0008453</div>
+        <p>© 2026 M.R. Motor & Parts, Ajmer</p>
     </footer>
 
     <script>
-        function toggleMenu() {
-            var m = document.getElementById("settings-menu");
-            m.style.display = (m.style.display === "block") ? "none" : "block";
+        function toggleSet() {
+            var s = document.getElementById('settings-box');
+            s.style.display = (s.style.display === 'block') ? 'none' : 'block';
         }
 
         function setLang(lang) {
-            if(lang === 'hi') {
-                document.getElementById("owner-name").innerText = "मालिक: मुकेश लोहार (7737750771)";
-                document.getElementById("service-head").innerText = "हमारी मुख्य सेवाएं";
+            if(lang === 'en') {
+                document.getElementById('ownerLine').innerText = "Mukesh Lohar (7737750771) - Ajmer";
+                document.getElementById('waUpd').innerText = "Today's New Update";
+                document.getElementById('igOff').innerText = "Today's New Offer";
+                document.getElementById('galTxt').innerText = "Stock Gallery";
+                document.getElementById('serTitle').innerText = "Our Services (Touch)";
             } else {
-                document.getElementById("owner-name").innerText = "Owner: Mukesh Lohar (7737750771)";
-                document.getElementById("service-head").innerText = "Our Main Services";
+                location.reload(); 
             }
+            toggleSet();
         }
 
-        function setTheme(t) {
-            document.getElementById("page-body").style.backgroundColor = (t === 'grey') ? "#2c2c2c" : "#0a0a0a";
-        }
-
-        function copyURL() {
-            navigator.clipboard.writeText(window.location.href);
-            alert("प्रोफाइल लिंक कॉपी हो गया!");
+        function shareCard() {
+            if (navigator.share) {
+                navigator.share({ title: 'M.R. Motor & Parts', url: window.location.href });
+            } else {
+                alert("Link Copied!");
+            }
         }
     </script>
 </body>
