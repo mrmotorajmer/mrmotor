@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.R. MOTOR & PARTS | VIP Fixed</title>
+    <title>M.R. MOTOR & PARTS | VIP Glass</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); --bg: #000000; }
-        body { margin: 0; padding: 15px; background: var(--bg); color: white; font-family: sans-serif; text-align: center; }
+        body { margin: 0; padding: 15px; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; text-align: center; }
         .firm-name { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.1rem; font-weight: 900; margin: 10px 0; }
+
+        /* Glass Buttons Style */
         .icon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 25px 0; }
-        .icon-card { background: #111; border: 1px solid #bf953f; border-radius: 15px; padding: 12px 5px; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; }
-        .icon-card i { font-size: 1.8rem; margin-bottom: 8px; }
-        .icon-card span { font-size: 0.62rem; font-weight: bold; }
-        .fa-whatsapp { color: #25D366; } .fa-instagram { color: #E1306C; } .fa-youtube { color: #FF0000; } .fa-folder-open { color: #FFD700; } .fa-bullhorn { color: #FFA500; }
+        .icon-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px; padding: 15px 5px; text-decoration: none; color: white; 
+            display: flex; flex-direction: column; align-items: center; transition: 0.4s;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .icon-card i { font-size: 2rem; margin-bottom: 8px; filter: drop-shadow(0 0 8px currentColor); }
+        .icon-card span { font-size: 0.62rem; font-weight: bold; text-transform: uppercase; }
+        
+        /* Glass Glow Colors */
+        .fa-whatsapp { color: #25D366; } .fa-instagram { color: #FF0077; } .fa-youtube { color: #FF0000; } 
+        .fa-folder-open { color: #00D2FF; } .fa-bullhorn { color: #FFA500; }
+
         .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-        .s-box { background: var(--gold); color: black; padding: 18px 5px; border-radius: 10px; font-size: 0.85rem; font-weight: 900; cursor: pointer; border: none; height: 65px; display: flex; align-items: center; justify-content: center; }
+        .s-box { background: var(--gold); color: black; padding: 18px 5px; border-radius: 12px; font-size: 0.85rem; font-weight: 900; cursor: pointer; height: 65px; display: flex; align-items: center; justify-content: center; border: none; box-shadow: 0 4px 15px rgba(184, 134, 11, 0.3); }
+
         .settings-btn { position: fixed; top: 15px; right: 15px; font-size: 28px; color: gold; z-index: 1000; cursor: pointer; }
         #settings-pane { display: none; position: fixed; top: 55px; right: 15px; background: #1a1a1a; border: 2px solid gold; padding: 15px; border-radius: 12px; z-index: 1001; }
         .lang-btn { background: var(--gold); border: none; padding: 10px 18px; margin: 5px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
         #detail-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; }
         .modal-content { background: #111; border: 2px solid gold; width: 85%; padding: 25px; border-radius: 20px; position: relative; max-height: 80%; overflow-y: auto; }
         .close-btn { color: gold; font-size: 35px; position: absolute; top: 5px; right: 15px; cursor: pointer; }
         #infoBody { text-align: left; line-height: 1.6; white-space: pre-wrap; font-size: 0.95rem; }
+        footer { margin-top: 40px; border-top: 1px solid #222; padding: 20px; font-size: 0.75rem; color: #555; }
     </style>
 </head>
 <body>
@@ -31,16 +47,20 @@
         <button class="lang-btn" onclick="changeL('hi')">हिन्दी</button>
         <button class="lang-btn" onclick="changeL('en')">English</button>
     </div>
+
     <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
+    <div id="subTxt" style="color: #aaa; font-size: 0.9rem;">मुकेश लोहार (7737750771) - अजमेर [cite: 2025-12-31]</div>
+
     <div class="icon-grid">
         <a href="https://wa.me/917737750771" class="icon-card"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-        <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-card"><i class="fas fa-bullhorn"></i><span id="waBtn">आज का न्यू अपडेट</span></a>
-        <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span id="igBtn">आज का नया ऑफर</span></a>
-        <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span>Insta Profile</span></a>
-        <a href="https://drive.google.com/drive/folders/1sCrX4lepGOa1Wa4XoxSB4FOtednUnXOc" target="_blank" class="icon-card"><i class="fas fa-folder-open"></i><span id="drBtn">फोटो गैलरी</span></a>
+        <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-card"><i class="fas fa-bullhorn"></i><span id="waBtn">न्यू अपडेट</span></a>
+        <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span id="igBtn">नया ऑफर</span></a>
+        <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram" style="color:#00D2FF"></i><span>प्रोफ़ाइल</span></a>
+        <a href="https://drive.google.com/drive/folders/1sCrX4lepGOa1Wa4XoxSB4FOtednUnXOc?usp=sharing" target="_blank" onclick="window.location.href=this.href; return false;" class="icon-card"><i class="fas fa-folder-open"></i><span id="drBtn">गैलरी</span></a>
         <a href="https://youtube.com/@mr.indianlohar512" class="icon-card"><i class="fab fa-youtube"></i><span>YouTube</span></a>
     </div>
-    <h3 id="servTitle" style="color: gold;">हमारी सेवाएं (टच करें)</h3>
+
+    <h3 id="servTitle" style="color: gold; font-size: 0.9rem;">हमारी सेवाएं (टच करें)</h3>
     <div class="service-grid">
         <div class="s-box" onclick="showInfo(0)" id="b0">स्क्रैप गाड़ियाँ</div>
         <div class="s-box" onclick="showInfo(1)" id="b1">रनिंग गाड़ियाँ</div>
@@ -49,13 +69,28 @@
         <div class="s-box" onclick="showInfo(4)" id="b4">मेटल स्क्रैप</div>
         <div class="s-box" onclick="showInfo(5)" id="b5">घरेलू/ऑफिस</div>
     </div>
+
     <div id="detail-modal"><div class="modal-content"><span class="close-btn" onclick="closeInfo()">&times;</span><div id="infoBody"></div></div></div>
+    
+    <footer>
+        <div id="footerInfo">BRN: 8005700056000174 | MSME: UDYAM-RJ-01-0008453 [cite: 2026-02-17]</div>
+        <p>© 2026 M.R. Motor & Parts, Ajmer [cite: 2025-12-31]</p>
+    </footer>
+
     <script>
-        const content = {
-            hi: { wa:"आज का न्यू अपडेट", ig:"आज का नया ऑफर", dr:"फोटो गैलरी", st:"हमारी सेवाएं (टच करें)", boxes:["स्क्रैप गाड़ियाँ","रनिंग गाड़ियाँ","हैवी मशीनरी","फैक्ट्री स्क्रैप","मेटल स्क्रैप","घरेलू/ऑफिस"], info:["स्क्रैप गाड़ियाँ:\n• 15+ साल पुरानी गाड़ियाँ।\n• बेस्ट रेट और RC कैंसिल गारंटी।","रनिंग गाड़ियाँ:\n• पुरानी गाड़ियों की खरीद-बेच।","हैवी मशीनरी:\n• ट्रक, जेसीबी और माइंस मशीनरी।","फैक्ट्री स्क्रैप:\n• बंद मिलें और फैक्ट्री का कबाड़।","मेटल स्क्रैप:\n• तांबा, लोहा और पीतल थोक भाव में।","घरेलू/ऑफिस:\n• अलमारी, एसी और ऑफिस फर्नीचर।"] },
-            en: { wa:"Today's Update", ig:"Today's Offer", dr:"Photo Gallery", st:"Our Services (Touch)", boxes:["Scrap Vehicles","Running Cars","Heavy Machinery","Factory Scrap","Metal & Scrap","Home & Office"], info:["Scrap Vehicles:\n• 15+ year old vehicles.\n• Best rates & RC cancel guarantee.","Running Cars:\n• Trusted buying/selling of cars.","Heavy Machinery:\n• Trucks, JCB & Mining scrap.","Factory Scrap:\n• Closed mills & industrial scrap.","Metal & Scrap:\n• Bulk rates for Iron & Copper.","Home & Office:\n• Office furniture & Home scrap."] }
-        };
         let cur = 'hi';
+        const content = {
+            hi: {
+                wa: "न्यू अपडेट", ig: "नया ऑफर", dr: "गैलरी", st: "हमारी सेवाएं (टच करें)",
+                boxes: ["स्क्रैप गाड़ियाँ", "रनिंग गाड़ियाँ", "हैवी मशीनरी", "फैक्ट्री स्क्रैप", "मेटल स्क्रैप", "घरेलू/ऑफिस"],
+                info: ["स्क्रैप गाड़ियाँ:\n• 15+ साल पुरानी गाड़ियाँ खरीदें।\n• RC कैंसिल 100% गारंटी। [cite: 2025-12-31]", "रनिंग गाड़ियाँ:\n• पुरानी गाड़ियों की खरीद-बेच। [cite: 2025-12-31]", "हैवी मशीनरी:\n• ट्रक, जेसीबी और माइनिंग स्क्रैप। [cite: 2025-12-31]", "फैक्ट्री स्क्रैप:\n• बंद मिलें और भारी मशीनरी। [cite: 2025-12-31]", "मेटल स्क्रैप:\n• तांबा, लोहा और पीतल थोक भाव। [cite: 2025-12-31]", "घरेलू/ऑफिस:\n• ऑफिस और घर का कबाड़। [cite: 2025-12-31]"]
+            },
+            en: {
+                wa: "New Update", ig: "New Offer", dr: "Gallery", st: "Our Services (Touch)",
+                boxes: ["Scrap Vehicles", "Running Cars", "Heavy Machinery", "Factory Scrap", "Metal & Scrap", "Home & Office"],
+                info: ["Scrap Vehicles:\n• Buying 15+ year old cars.\n• 100% RC cancellation. [cite: 2025-12-31]", "Running Cars:\n• Used cars buying/selling. [cite: 2025-12-31]", "Heavy Machinery:\n• Trucks & Mining scrap. [cite: 2025-12-31]", "Factory Scrap:\n• Closed mills & factories. [cite: 2025-12-31]", "Metal & Scrap:\n• Bulk Iron & Copper. [cite: 2025-12-31]", "Home & Office:\n• Office & Home scrap. [cite: 2025-12-31]"]
+            }
+        };
         function toggleSet() { document.getElementById('settings-pane').style.display = (document.getElementById('settings-pane').style.display === 'block') ? 'none' : 'block'; }
         function changeL(l) {
             cur = l; document.getElementById('waBtn').innerText = content[l].wa; document.getElementById('igBtn').innerText = content[l].ig;
