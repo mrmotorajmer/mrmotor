@@ -10,7 +10,7 @@
         body { margin: 0; padding: 15px; background: var(--bg); color: white; font-family: sans-serif; text-align: center; }
         .firm-name { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2rem; font-weight: 900; margin: 10px 0; }
         
-        /* Glass Design Buttons (7 Buttons) */
+        /* Glass Design Buttons (8 Buttons) */
         .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 20px 0; }
         .icon-card { 
             background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); 
@@ -21,9 +21,10 @@
         .icon-card i { font-size: 1.5rem; margin-bottom: 5px; filter: drop-shadow(0 0 5px currentColor); }
         .icon-card span { font-size: 0.55rem; font-weight: bold; }
         
-        .fa-whatsapp { color: #25D366; } .fa-facebook { color: #1877F2; } 
-        .fa-instagram { color: #FF0077; } .fa-youtube { color: #FF0000; } 
-        .fa-folder-open { color: #00D2FF; } .fa-bullhorn { color: #FFA500; }
+        .fa-phone-alt { color: #00E676; } .fa-whatsapp { color: #25D366; } 
+        .fa-facebook { color: #1877F2; } .fa-instagram { color: #FF0077; } 
+        .fa-youtube { color: #FF0000; } .fa-folder-open { color: #00D2FF; } 
+        .fa-bullhorn { color: #FFA500; }
 
         .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
         .s-box { background: var(--gold); color: black; padding: 15px 5px; border-radius: 10px; font-size: 0.8rem; font-weight: 900; height: 55px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
@@ -34,8 +35,8 @@
         .modal-content { background: #111; border: 2px solid gold; width: 85%; padding: 25px; border-radius: 20px; position: relative; }
         
         /* Registration Details Styling */
-        .reg-details { margin-top: 30px; font-size: 0.7rem; color: #888; border-top: 1px solid #222; padding-top: 15px; line-height: 1.6; }
-        .reg-details strong { color: gold; }
+        .reg-details { margin-top: 30px; font-size: 0.75rem; color: #ccc; border-top: 1px solid #333; padding-top: 15px; line-height: 1.8; }
+        .reg-details strong { color: gold; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -46,15 +47,19 @@
     </div>
 
     <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
-    <p style="color:#aaa; font-size:0.85rem; margin:0;">मुकेश लोहार (अजमेर)</p>
+    <p style="color:#aaa; font-size:0.85rem; margin:0;">अजमेर, राजस्थान</p>
 
     <div class="icon-grid">
+        <a href="tel:+917737750771" class="icon-card"><i class="fas fa-phone-alt"></i><span>Call Now</span></a>
+        
         <a href="https://wa.me/917737750771" class="icon-card"><i class="fab fa-whatsapp"></i><span>Chat</span></a>
+        
         <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-card"><i class="fas fa-bullhorn"></i><span id="waBtn">अपडेट</span></a>
         
         <a href="fb://facewebmodal/f?href=https://www.facebook.com/share/12CoDqVp93x/" onclick="window.location.href='https://www.facebook.com/share/12CoDqVp93x/'; return false;" class="icon-card"><i class="fab fa-facebook"></i><span>Facebook</span></a>
         
         <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span id="igBtn">ऑफर</span></a>
+        
         <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span>Insta</span></a>
         
         <a href="https://drive.google.com/drive/folders/1sCrX4lepGOa1Wa4xoxSB4FOtednUnXOc?usp=sharing" target="_blank" onclick="window.open(this.href, '_blank'); return false;" class="icon-card"><i class="fas fa-folder-open"></i><span id="drBtn">गैलरी</span></a>
@@ -75,18 +80,20 @@
     <div id="detail-modal"><div class="modal-content"><span onclick="closeInfo()" style="color:gold; font-size:35px; position:absolute; top:5px; right:15px; cursor:pointer;">&times;</span><div id="infoBody" style="text-align:left; line-height:1.6; font-size:0.9rem;"></div></div></div>
 
     <div class="reg-details">
+        <strong>प्रोप्राइटर:</strong> मुकेश लोहार<br>
+        <strong>फर्म का नाम:</strong> M.R. MOTOR & PARTS<br>
         <strong>BRN:</strong> 8005700056000174<br>
         <strong>MSME:</strong> UDYAM-RJ-01-0008453
     </div>
 
     <footer>
-        <p style="font-size: 0.65rem; color:#444; margin-top:10px;">© 2026 M.R. Motor & Parts, Ajmer [cite: 2025-12-31]</p>
+        <p style="font-size: 0.65rem; color:#444; margin-top:10px;">© 2026 M.R. Motor & Parts, Ajmer</p>
     </footer>
 
     <script>
         let cur = 'hi';
         const content = {
-            hi: { wa:"अपडेट", ig:"ऑफर", dr:"गैलरी", st:"हमारी सेवाएं (टच करें)", boxes:["स्क्रैप गाड़ियाँ","रनिंग गाड़ियाँ","हैवी मशीनरी","फैक्ट्री स्क्रैप","मेटल स्क्रैप","घरेलू/ऑफिस"], info:["• 15+ साल पुरानी गाड़ियाँ खरीदें।\n• RC कैंसिल की कानूनी गारंटी। [cite: 2025-12-31]","• पुरानी गाड़ियों की खरीद-बेच। [cite: 2025-12-31]","• ट्रक, जेसीबी और माइनिंग स्क्रैप। [cite: 2025-12-31]","• बंद मिलें और फैक्ट्री का कबाड़। [cite: 2025-12-31]","• तांबा, लोहा, पीतल थोक भाव। [cite: 2025-12-31]","• घर और ऑफिस का कबाड़। [cite: 2025-12-31]"] },
+            hi: { wa:"अपडेट", ig:"ऑफर", dr:"गैलरी", st:"हमारी सेवाएं (टच करें)", boxes:["स्क्रैप गाड़ियाँ","रनिंग गाड़ियाँ","हैवी मशीनरी","फैक्ट्री स्क्रैप","मेटल स्क्रैप","घरेलू/ऑफिस"], info:["• 15+ साल पुरानी गाड़ियाँ खरीदें।\n• RC कैंसिल की कानूनी गारंटी।","• पुरानी गाड़ियों की खरीद-बेच।","• ट्रक, जेसीबी और माइनिंग स्क्रैप।","• बंद मिलें और फैक्ट्री का कबाड़।","• तांबा, लोहा, पीतल थोक भाव।","• घर और ऑफिस का कबाड़।"] },
             en: { wa:"Update", ig:"Offer", dr:"Gallery", st:"Our Services (Touch)", boxes:["Scrap Cars","Used Cars","Machinery","Factory","Metal","Home/Office"], info:["• Buying 15+ year old cars.","• Used cars buy/sell services.","• Trucks & JCB scrap.","• Industrial scrap purchase.","• Bulk metal purchase.","• Old office/home furniture."] }
         };
         function toggleSet() { let p = document.getElementById('settings-pane'); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
