@@ -3,122 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M.R. MOTOR & PARTS | मुकेश लोहार</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>M.R. MOTOR & PARTS | VIP Digital Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #ffcc00; --neon: #00f2ff; --bg: #050a14; --glass: rgba(255, 255, 255, 0.08); }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #fff; text-align: center; overflow-x: hidden; }
-        
-        /* सितारों वाला एनिमेटेड बैकग्राउंड */
-        .stars-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #111e36 0%, #050a14 100%); overflow: hidden; }
-        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: twinkle var(--d) infinite ease-in-out; }
-        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+        :root {
+            --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --black-matte: #0a0a0a;
+            --grey-dark: #2c2c2c;
+            --white: #ffffff;
+        }
 
-        /* 3D हेडर */
-        header { padding: 60px 20px; border-bottom: 2px solid var(--gold); background: linear-gradient(to bottom, rgba(0,35,102,0.5), transparent); }
-        .logo-3d { font-size: 2.8rem; color: var(--gold); text-transform: uppercase; font-weight: 900; letter-spacing: 2px;
-            text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
-            animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        * { box-sizing: border-box; transition: all 0.4s ease; }
 
-        /* VIP सोशल बटन */
-        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 20px; max-width: 500px; margin: 0 auto; }
-        .s-btn { padding: 15px; border-radius: 15px; text-decoration: none; color: #fff; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .s-btn:hover { transform: translateY(-5px); filter: brightness(1.2); }
-        .b-offer { grid-column: span 2; background: linear-gradient(45deg, #ff0000, #ffcc00); color: #000; animation: glow 1.5s infinite alternate; }
-        @keyframes glow { from { box-shadow: 0 0 5px #ffcc00; } to { box-shadow: 0 0 25px #ffcc00; } }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black-matte);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
-        /* सर्विस 3D बॉक्स */
-        .services-container { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 20px; max-width: 600px; margin: 0 auto; }
-        .service-card { background: var(--glass); border-radius: 20px; border: 1px solid rgba(255,255,255,0.15); padding: 25px; text-align: left; position: relative; backdrop-filter: blur(10px); transition: 0.4s; }
-        .service-card:hover { border-color: var(--gold); transform: perspective(1000px) rotateX(5deg); }
-        .service-card i { font-size: 2rem; color: var(--gold); position: absolute; top: 20px; right: 20px; opacity: 0.5; }
-        .service-card h3 { color: var(--neon); margin: 0 0 10px 0; font-size: 1.5rem; text-shadow: 0 0 10px var(--neon); }
-        .service-card p { margin: 0; color: #ddd; line-height: 1.6; font-size: 1.05rem; }
+        /* --- 3D Header --- */
+        .header-section {
+            padding: 60px 20px;
+            background: radial-gradient(circle, #222, #000);
+            border-bottom: 2px solid #bf953f;
+        }
 
-        /* सेटिंग्स और फ्लोटिंग बटन */
-        .fab-settings { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: #000; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 0 20px var(--gold); cursor: pointer; z-index: 1000; }
-        
-        footer { background: #000; padding: 40px 20px; border-top: 1px solid #333; }
-        .trust-info { border: 1px dashed var(--gold); padding: 15px; border-radius: 10px; display: inline-block; margin-bottom: 20px; color: var(--gold); }
+        .firm-name {
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+            filter: drop-shadow(0 5px 15px rgba(191, 149, 63, 0.4));
+            animation: float3D 4s infinite ease-in-out;
+        }
+
+        @keyframes float3D {
+            0%, 100% { transform: perspective(500px) rotateX(0deg) translateY(0); }
+            50% { transform: perspective(500px) rotateX(10deg) translateY(-10px); }
+        }
+
+        /* --- VIP Buttons (Gold & Black) --- */
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .vip-btn {
+            background: var(--gold);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 260px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vip-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px #fcf6ba;
+            filter: brightness(1.1);
+        }
+
+        .insta-btn {
+            animation: pulseGlow 2s infinite;
+            border: 2px solid #fff;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px gold; }
+            50% { box-shadow: 0 0 25px #ff4500; }
+            100% { box-shadow: 0 0 5px gold; }
+        }
+
+        /* --- Service Boxes --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .service-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #bf953f;
+            padding: 30px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .service-box:hover {
+            background: var(--gold);
+            color: black;
+            transform: translateY(-10px) rotateY(10deg);
+        }
+
+        /* --- Working Settings Gear --- */
+        .settings-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 35px;
+            cursor: pointer;
+            z-index: 1000;
+            color: #ffbf00;
+        }
+
+        #settings-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #1a1a1a;
+            border: 2px solid #bf953f;
+            padding: 20px;
+            border-radius: 12px;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .menu-btn {
+            background: var(--gold);
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #000;
+            padding: 60px 20px;
+            border-top: 2px solid #333;
+        }
+
+        .doc-text { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
     </style>
 </head>
-<body>
+<body id="page-body">
 
-<div class="stars-bg" id="starField"></div>
-
-<header>
-    <div class="logo-3d">M.R. MOTOR & PARTS</div>
-    <p style="color: #00f2ff; font-weight: bold; font-size: 1.2rem;">अजमेर की विश्वसनीय स्क्रैप फर्म</p>
-</header>
-
-<div class="social-grid">
-    <a href="https://whatsapp.com/channel/0029VaRQWeM419emE2K5B40p" target="_blank" class="s-btn b-offer"><i class="fas fa-bullhorn"></i> आज का धमाकेदार ऑफर (Channel)</a>
-    <a href="https://wa.me/917737750771" class="s-btn" style="background: #25D366;"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a>
-    <a href="https://youtube.com/@mr.indianlohar512" target="_blank" class="s-btn" style="background: #FF0000;"><i class="fab fa-youtube"></i> YouTube</a>
-    <a href="https://www.instagram.com/mukeshj16230" target="_blank" class="s-btn" style="background: linear-gradient(45deg, #f09433, #e1306c);"><i class="fab fa-instagram"></i> Instagram</a>
-    <a href="https://drive.google.com/drive/folders/1sCrX41epG6a1Wa4Xox5B4F0TedvuWk0C" target="_blank" class="s-btn" style="background: #4285F4;"><i class="fas fa-images"></i> काम की गैलरी</a>
-</div>
-
-<div class="services-container">
-    <div class="service-card">
-        <i class="fas fa-recycle"></i>
-        <h3>1. स्क्रैप गाड़ियाँ (15 साल पुरानी)</h3>
-        <p>हम पुरानी 15 साल पुरानी गाड़ियाँ बेस्ट रेट पर खरीदते हैं। <b>आरसी कैंसिल लेटर</b> की सुविधा और उचित स्क्रैप मूल्य।</p>
+    <div class="settings-icon" onclick="toggleMenu()">⚙️</div>
+    <div id="settings-menu">
+        <p id="menu-label">Settings / सेटिंग्स</p>
+        <button class="menu-btn" onclick="setLang('hi')">हिन्दी</button>
+        <button class="menu-btn" onclick="setLang('en')">English</button>
+        <hr>
+        <button class="menu-btn" onclick="setTheme('grey')">ग्रे थीम</button>
+        <button class="menu-btn" onclick="setTheme('black')">ब्लैक थीम</button>
     </div>
-    <div class="service-card">
-        <i class="fas fa-car-side"></i>
-        <h3>2. रनिंग गाड़ियाँ</h3>
-        <p>अच्छी कंडीशन और ऊंचे मॉडल की गाड़ियाँ खरीदने और बेचने के लिए संपर्क करें। हम रनिंग गाड़ियों की पूरी जानकारी देते हैं।</p>
-    </div>
-    <div class="service-card">
-        <i class="fas fa-truck-moving"></i>
-        <h3>3. हैवी गाड़ियाँ (कमर्शियल)</h3>
-        <p>ट्रक, डंपर, ट्रेलर, घोड़े, ट्रॉली और जेसीबी जैसी भारी मशीनरी गाड़ियाँ खरीदने-बेचने के लिए सबसे बेस्ट जगह।</p>
-    </div>
-    <div class="service-card">
-        <i class="fas fa-industry"></i>
-        <h3>4. फैक्ट्री एवं माइंस स्क्रैप</h3>
-        <p>पुरानी मिलें, माइंस और फैक्ट्रियों का पूरा स्क्रैप, मशीनरी, पुर्जे और हैवी मेटल का सारा सामान हम खरीदते हैं।</p>
-    </div>
-    <div class="service-card">
-        <i class="fas fa-coins"></i>
-        <h3>5. मेटल एवं भानगढ़</h3>
-        <p>तांबा, पीतल, लोहा, एल्युमीनियम और हर तरह का खुला स्क्रैप। पुराने भानगढ़ की ऊँची कीमत पाएं।</p>
-    </div>
-    <div class="service-card">
-        <i class="fas fa-home"></i>
-        <h3>6. घरेलू एवं ऑफिस सामान</h3>
-        <p>पुराना लोहा, अलमारी, फ्रिज, एसी, कूलर, पंखे, खिड़कियां, गेट और ऑफिस का सारा फर्नीचर हम खरीदते हैं।</p>
-    </div>
-</div>
 
-<footer>
-    <div class="trust-info">
-        <b>BRN:</b> 8005700056000174 | <b>MSME:</b> UDYAM-RJ-01-0008453
+    <header class="header-section">
+        <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
+        <h2 id="owner-name">मालिक: मुकेश लोहार (7737750771)</h2>
+        <p id="location">अजमेर, राजस्थान</p>
+    </header>
+
+    <div class="links-container">
+        <a href="https://wa.me/917737750771" class="vip-btn">WHATSAPP CHAT</a>
+        <a href="https://www.instagram.com/mukeshj16230" class="vip-btn insta-btn">🔥 आज की अपडेट (INSTA)</a>
+        <a href="https://drive.google.com/drive/folders/1sCrX41epG6a1Wa4Xox5B4F0TedvuWk0C" class="vip-btn">PHOTO GALLERY</a>
+        <a href="https://whatsapp.com/channel/0029VaRQWeM419emE2K5B40p" class="vip-btn">धमाका ऑफर</a>
+        <a href="https://youtube.com/@mr.indianlohar512" class="vip-btn">YOUTUBE</a>
+        <a href="https://www.facebook.com/mukesh.lohar.16230" class="vip-btn">FACEBOOK</a>
     </div>
-    <p><b>मालिक: मुकेश लोहार</b> - 8005700056</p>
-    <p>📍 नाकामदार, गुलाबवाड़ी, लोहार की पुलिया, अजमेर</p>
-</footer>
 
-<div class="fab-settings" onclick="openMenu()"><i class="fas fa-cog"></i></div>
+    <h2 id="service-head">हमारी मुख्य सेवाएं</h2>
+    <div class="services-grid">
+        <div class="service-box" onclick="alert('15 साल पुरानी गाड़ियाँ, बेस्ट रेट, आरसी कैंसिल गारंटी')">
+            <h3>स्क्रैप गाड़ियाँ</h3>
+            <p>15+ साल पुरानी गाड़ियाँ</p>
+        </div>
+        <div class="service-box" onclick="alert('खरीद-बेच, अच्छी कंडीशन, ऊंचे मॉडल')">
+            <h3>रनिंग गाड़ियाँ</h3>
+            <p>बेहतरीन कंडीशन मॉडल</p>
+        </div>
+        <div class="service-box" onclick="alert('ट्रक, डंपर, ट्रेलर, जेसीबी, माइंस मशीनरी')">
+            <h3>हैवी मशीनरी</h3>
+            <p>ट्रक, डंपर, JCB</p>
+        </div>
+    </div>
 
-<script>
-    // सितारे बनाने की कोडिंग
-    const field = document.getElementById('starField');
-    for (let i = 0; i < 100; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        star.style.width = star.style.height = Math.random() * 3 + 'px';
-        star.style.left = Math.random() * 100 + '%';
-        star.style.top = Math.random() * 100 + '%';
-        star.style.setProperty('--d', Math.random() * 3 + 2 + 's');
-        field.appendChild(star);
-    }
-    function openMenu() {
-        alert("सेटिंग्स: यहाँ से आप भाषा बदल सकते हैं और वेबसाइट शेयर कर सकते हैं!");
-    }
-</script>
+    <footer>
+        <div class="doc-text" id="doc-info">
+            BRN: 8005700056000174 | MSME: UDYAM-RJ-01-0008453
+        </div>
+        <p>© 2026 M.R. Motor & Parts - मुकेश लोहार</p>
+        <button class="menu-btn" onclick="copyURL()">शेयर प्रोफाइल 🔗</button>
+    </footer>
 
+    <script>
+        function toggleMenu() {
+            var m = document.getElementById("settings-menu");
+            m.style.display = (m.style.display === "block") ? "none" : "block";
+        }
+
+        function setLang(lang) {
+            if(lang === 'hi') {
+                document.getElementById("owner-name").innerText = "मालिक: मुकेश लोहार (7737750771)";
+                document.getElementById("service-head").innerText = "हमारी मुख्य सेवाएं";
+            } else {
+                document.getElementById("owner-name").innerText = "Owner: Mukesh Lohar (7737750771)";
+                document.getElementById("service-head").innerText = "Our Main Services";
+            }
+        }
+
+        function setTheme(t) {
+            document.getElementById("page-body").style.backgroundColor = (t === 'grey') ? "#2c2c2c" : "#0a0a0a";
+        }
+
+        function copyURL() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("प्रोफाइल लिंक कॉपी हो गया!");
+        }
+    </script>
 </body>
 </html>
