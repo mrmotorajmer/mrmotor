@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.R. MOTOR & PARTS | Ajmer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #ffcc00; --bg: #0b101a; --glass: rgba(255, 255, 255, 0.1); --royal: #002366; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: #fff; text-align: center; overflow-x: hidden; }
+        
+        /* सेटिंग बटन (Language) */
+        .settings-btn { position: fixed; top: 20px; right: 20px; z-index: 1001; background: var(--gold); color: #000; padding: 10px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 0 15px var(--gold); }
+
+        /* 3D गोल्ड हेडर */
+        header { padding: 50px 20px; background: linear-gradient(180deg, var(--royal), var(--bg)); border-bottom: 3px solid var(--gold); }
+        header h1 { 
+            font-size: 3rem; color: var(--gold); margin: 0;
+            text-shadow: 2px 2px 0px #856404, 4px 4px 20px rgba(255,204,0,0.8);
+            transform: perspective(500px) rotateX(10deg); font-weight: 900;
+        }
+        header p { font-size: 1.4rem; font-weight: bold; margin-top: 10px; }
+
+        /* धमाका बटन्स */
+        .main-btns { display: grid; gap: 15px; max-width: 500px; margin: -25px auto 30px; padding: 20px; }
+        .btn { padding: 18px; border-radius: 20px; text-decoration: none; color: #fff; font-weight: bold; font-size: 1.1rem; box-shadow: 0 6px 0 #000; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 12px; }
+        .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #000; }
+        .b-offer { background: linear-gradient(#ffcc00, #b8860b); color: #000; border: 2px solid #fff; animation: pulse 2s infinite; }
+        .b-wa { background: linear-gradient(#2ecc71, #27ae60); }
+        .b-yt { background: linear-gradient(#ff0000, #cc0000); }
+        .b-ig { background: linear-gradient(#f09433, #e1306c); }
+
+        /* सर्विस बॉक्स */
+        .services { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; max-width: 600px; margin: 0 auto; }
+        .s-box { background: var(--glass); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: 0.3s; }
+        .s-box:hover { border-color: var(--gold); background: rgba(255,255,255,0.2); }
+        .s-box i { font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; display: block; filter: drop-shadow(0 0 8px var(--gold)); }
+
+        /* पॉपअप डिटेल */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+        .modal-content { background: #161b22; padding: 30px; border-radius: 25px; border: 2px solid var(--gold); max-width: 450px; width: 100%; position: relative; text-align: left; }
+
+        footer { background: #000; padding: 40px 20px; border-top: 2px solid #333; margin-top: 40px; }
+        .reg-info { font-size: 0.9rem; color: var(--gold); margin-bottom: 20px; border: 1px dashed var(--gold); padding: 10px; border-radius: 10px; }
+
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+<div class="settings-btn" onclick="openLang()"><i class="fas fa-cog"></i></div>
+
+<header>
+    <h1 id="mainTitle">M.R. MOTOR & PARTS</h1>
+    <p id="subTitle">अजमेर का नं. 1 स्क्रैप डीलर</p>
+</header>
+
+<div class="main-btns">
+    <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" target="_blank" class="btn b-offer"><i class="fab fa-whatsapp"></i> <span id="btnOffer">आज के न्यू ऑफर</span></a>
+    <a href="https://wa.me/917737750771" class="btn b-wa"><i class="fas fa-comments"></i> WhatsApp Chat</a>
+    <a href="https://www.instagram.com/mukeshji6230" target="_blank" class="btn b-ig"><i class="fab fa-instagram"></i> Instagram Update</a>
+    <a href="https://youtube.com/@mr.indianlohar512" target="_blank" class="btn b-yt"><i class="fab fa-youtube"></i> YouTube Channel</a>
+    <a href="https://drive.google.com/drive/folders/1sCrx4lepGOa1Wa4xoxSB4FOtednUnXOc" target="_blank" class="btn" style="background: #9b59b6;"><i class="fas fa-images"></i> स्टॉक कैटलॉग (फोटो)</a>
+</div>
+
+<div class="services">
+    <div class="s-box" onclick="showDetail('पुरानी गाड़ियाँ', '• हम ट्रक, बस, ट्रेलर और कार कबाड़ में खरीदते हैं।\n• 15 साल पुरानी गाड़ियों का पक्का समाधान।\n• RC/RTO की पूरी जिम्मेदारी हमारी।')">
+        <i class="fas fa-truck-moving"></i><h3 id="s1">पुरानी गाड़ियाँ</h3>
+    </div>
+    <div class="s-box" onclick="showDetail('रनिंग गाड़ियाँ', '• बोलेरो, पिकअप और टाटा एस जैसी चालू गाड़ियाँ।\n• खरीद-बिक्री के लिए अजमेर का भरोसेमंद नाम।\n• तुरंत नकद पेमेंट।')">
+        <i class="fas fa-car"></i><h3 id="s2">रनिंग गाड़ियाँ</h3>
+    </div>
+    <div class="s-box" onclick="showDetail('मेटल स्क्रैप', '• पुराना लोहा, तांबा, पीतल, एल्युमीनियम।\n• फैक्ट्री नीलामी (Auction) का भारी सामान।\n• वजन के अनुसार मार्केट से बेस्ट रेट।')">
+        <i class="fas fa-coins"></i><h3 id="s3">मेटल स्क्रैप</h3>
+    </div>
+    <div class="s-box" onclick="showDetail('फैक्ट्री स्क्रैप', '• बंद पड़ी फैक्ट्रियों का लोहा और मशीनरी।\n• साइट से माल उठाने की पूरी सुविधा।')">
+        <i class="fas fa-industry"></i><h3 id="s4">फैक्ट्री स्क्रैप</h3>
+    </div>
+</div>
+
+<div id="myModal" class="modal" onclick="this.style.display='none'">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <h2 id="modalTitle" style="color:var(--gold);"></h2>
+        <p id="modalDesc" style="line-height:1.7; white-space: pre-line;"></p>
+        <button onclick="document.getElementById('myModal').style.display='none'" style="background:var(--gold); border:none; padding:10px 25px; border-radius:10px; font-weight:bold; cursor:pointer;">OK</button>
+    </div>
+</div>
+
+<footer>
+    <div class="reg-info">
+        <b>BRN: 8005700056000174</b><br>
+        <b>UDYAM-RJ-01-0008453 (MSME Registered)</b>
+    </div>
+    <p><i class="fas fa-map-marker-alt"></i> गुलाब बाड़ी, लोहार की पुलिया, अजमेर</p>
+    <h2 style="color:var(--gold); font-size: 2.2rem;">7737750771</h2>
+    <p>© 2026 मुकेश लोहार | 15+ सालों का भरोसा</p>
+</footer>
+
+<script>
+    function showDetail(t, d) {
+        document.getElementById('modalTitle').innerText = t;
+        document.getElementById('modalDesc').innerText = d;
+        document.getElementById('myModal').style.display = 'flex';
+    }
+    function openLang() {
+        const lang = prompt("Choose Language:\n1. Hindi\n2. English\n3. Gujarati\n4. Punjabi");
+        if(lang == "2") {
+            document.getElementById('mainTitle').innerText = "M.R. MOTOR & PARTS";
+            document.getElementById('subTitle').innerText = "Ajmer's No. 1 Scrap Dealer";
+            document.getElementById('btnOffer').innerText = "Today's New Offers";
+        }
+    }
+</script>
+</body>
+</html>
