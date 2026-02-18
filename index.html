@@ -2,123 +2,56 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>M.R. MOTOR & PARTS | Ajmer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.R. MOTOR & PARTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --gold: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c); --bg: #000; }
-        body { margin: 0; padding: 15px; background: var(--bg); color: white; font-family: 'Segoe UI', Roboto, sans-serif; text-align: center; overflow-x: hidden; }
-        .top-tag { color: gold; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 5px; display: block; }
-        .firm-name { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8rem; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
+        body { margin: 0; padding: 15px; background: #000; color: white; font-family: sans-serif; text-align: center; }
+        .firm-name { background: var(--gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8rem; font-weight: 900; margin: 10px 0; }
         .icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
-        .icon-card { 
-            background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); 
-            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px;
-            padding: 12px 5px; text-decoration: none; color: white; 
-            display: flex; flex-direction: column; align-items: center; transition: 0.3s;
-        }
-        .icon-card i { font-size: 1.5rem; margin-bottom: 6px; }
-        .icon-card span { font-size: 0.6rem; font-weight: 600; white-space: nowrap; }
-        .fa-phone-alt { color: #00E676; } .fa-whatsapp { color: #25D366; } 
-        .fa-facebook { color: #1877F2; } .fa-instagram { color: #FF0077; } 
-        .fa-youtube { color: #FF0000; } .fa-folder-open { color: #00D2FF; } 
-        .fa-bullhorn { color: #FFA500; }
-        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-        .s-box { background: var(--gold); color: black; padding: 12px 5px; border-radius: 10px; font-size: 0.85rem; font-weight: 800; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 4px 15px rgba(191, 149, 63, 0.3); }
-        .settings-btn { position: fixed; top: 15px; left: 15px; font-size: 22px; color: gold; z-index: 1000; background: rgba(0,0,0,0.5); padding: 5px; border-radius: 50%; }
-        #settings-pane { display: none; position: fixed; top: 55px; left: 15px; background: #111; border: 1px solid gold; padding: 10px; border-radius: 8px; z-index: 1001; }
-        #detail-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
-        .modal-content { background: #111; border: 2px solid gold; width: 100%; max-width: 400px; padding: 25px; border-radius: 15px; position: relative; }
-        .reg-details { margin-top: 30px; font-size: 0.7rem; color: #999; border-top: 1px solid #222; padding-top: 15px; line-height: 1.6; }
-        .reg-details strong { color: gold; }
+        .icon-card { background: rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 10px 2px; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; border: 1px solid rgba(255,255,255,0.1); }
+        .icon-card i { font-size: 1.4rem; margin-bottom: 5px; color: gold; }
+        .icon-card span { font-size: 0.6rem; }
+        .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
+        .s-box { background: var(--gold); color: black; padding: 15px 5px; border-radius: 10px; font-size: 0.85rem; font-weight: 800; cursor: pointer; border: none; }
+        #detail-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-content { background: #111; border: 2px solid gold; width: 85%; padding: 20px; border-radius: 15px; position: relative; color: white; text-align: left; }
     </style>
 </head>
 <body>
-    <div class="settings-btn" onclick="toggleSet()">⚙️</div>
-    <div id="settings-pane">
-        <button onclick="changeL('hi')" style="background:gold; border:none; padding:8px 15px; font-weight:bold; margin-bottom:5px; width:100%;">हिन्दी</button>
-        <button onclick="changeL('en')" style="background:gold; border:none; padding:8px 15px; font-weight:bold; width:100%;">English</button>
-    </div>
-
-    <span class="top-tag">अजमेर का No. 1 स्क्रैप डीलर</span>
     <h1 class="firm-name">M.R. MOTOR & PARTS</h1>
-    <p style="color:#888; font-size:0.8rem; margin:0;">नका मदार, गुलाब बाड़ी, अजमेर</p>
+    <p style="color:gold; font-size:0.8rem;">नका मदार, अजमेर</p>
 
     <div class="icon-grid">
         <a href="tel:+917737750771" class="icon-card"><i class="fas fa-phone-alt"></i><span>Call</span></a>
         <a href="https://wa.me/917737750771" class="icon-card"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
-        <a href="https://whatsapp.com/channel/0029VaRQXwEKrWR4I9EmmE2K" class="icon-card"><i class="fas fa-bullhorn"></i><span id="waBtn">अपडेट</span></a>
         <a href="https://www.facebook.com/share/1GPgqgLjhV/" class="icon-card"><i class="fab fa-facebook"></i><span>Facebook</span></a>
-        <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span id="igBtn">ऑफर</span></a>
-        <a href="https://drive.google.com/drive/folders/1sCrx4lepGOa1Wa4xoxSB4FOtednUnXOc" class="icon-card"><i class="fas fa-folder-open"></i><span id="drBtn">गैलरी</span></a>
-        <a href="https://youtube.com/@mr.indianlohar512" class="icon-card"><i class="fab fa-youtube"></i><span>YouTube</span></a>
         <a href="https://www.instagram.com/mukeshj16230" class="icon-card"><i class="fab fa-instagram"></i><span>Insta</span></a>
     </div>
 
-    <h3 id="servTitle" style="color: gold; font-size: 0.9rem; margin-bottom: 15px;">हमारी सेवाएं</h3>
     <div class="service-grid">
-        <div class="s-box" onclick="showInfo(0)" id="b0">स्क्रैप गाड़ियाँ</div>
-        <div class="s-box" onclick="showInfo(1)" id="b1">रनिंग गाड़ियाँ</div>
-        <div class="s-box" onclick="showInfo(2)" id="b2">हैवी मशीनरी</div>
-        <div class="s-box" onclick="showInfo(3)" id="b3">फैक्ट्री स्क्रैप</div>
-        <div class="s-box" onclick="showInfo(4)" id="b4">मेटल स्क्रैप</div>
-        <div class="s-box" onclick="showInfo(5)" id="b5">घरेलू कबाड़</div>
+        <div class="s-box" onclick="showInfo(0)">स्क्रैप गाड़ियाँ</div>
+        <div class="s-box" onclick="showInfo(1)">रनिंग गाड़ियाँ</div>
+        <div class="s-box" onclick="showInfo(2)">हैवी मशीनरी</div>
+        <div class="s-box" onclick="showInfo(3)">फैक्ट्री स्क्रैप</div>
     </div>
 
     <div id="detail-modal">
         <div class="modal-content">
             <span onclick="closeInfo()" style="color:gold; font-size:30px; position:absolute; top:5px; right:15px; cursor:pointer;">&times;</span>
-            <div id="infoBody" style="text-align:left; line-height:1.6; font-size:0.9rem; white-space: pre-line; color: #eee;"></div>
+            <div id="infoBody"></div>
         </div>
     </div>
 
-    <div class="reg-details">
-        <strong>प्रोप्राइटर:</strong> मुकेश लोहार<br>
-        <strong>अनुभव:</strong> 15+ वर्ष<br>
-        <strong>MSME:</strong> UDYAM-RJ-01-0008453
-    </div>
-
-    <p style="font-size: 0.6rem; color:#444; margin-top:20px;">© 2026 M.R. MOTOR & PARTS</p>
-
     <script>
-        let cur = 'hi';
-        const content = {
-            hi: { 
-                wa:"अपडेट", ig:"ऑफर", dr:"गैलरी", st:"हमारी सेवाएं", 
-                boxes:["स्क्रैप गाड़ियाँ","रनिंग गाड़ियाँ","हैवी मशीनरी","फैक्ट्री स्क्रैप","मेटल स्क्रैप","घरेलू कबाड़"], 
-                info:[
-                    "🚗 स्क्रैप गाड़ियाँ:\nपुरानी कार, जीप और वैन की खरीद। आरसी कैंसिल की कानूनी गारंटी।",
-                    "🚙 रनिंग गाड़ियाँ:\nपुरानी गाड़ियों की खरीद-बेच और पेपर वर्क में मदद।",
-                    "🚛 हैवी मशीनरी:\nट्रक, जेसीबी और डंपर का स्क्रैप।",
-                    "🏭 फैक्ट्री स्क्रैप:\nबंद फैक्ट्रियां और भारी लोहे के स्ट्रक्चर।",
-                    "🔩 मेटल स्क्रैप:\nतांबा, पीतल और भारी लोहे का थोक व्यापार।",
-                    "🏠 घरेलू कबाड़:\nपुराने एसी, फ्रिज, अलमारी और ऑफिस फर्नीचर।"
-                ] 
-            },
-            en: { 
-                wa:"Update", ig:"Offer", dr:"Gallery", st:"Our Services", 
-                boxes:["Scrap Cars","Used Cars","Machinery","Factory","Metal","Home Scrap"], 
-                info:[
-                    "🚗 Scrap Vehicles:\nBuying 15+ year old cars/vans with legal guarantee.",
-                    "🚙 Used Cars:\nBuying and selling well-maintained vehicles.",
-                    "🚛 Heavy Machinery:\nScrap for trucks, JCB, and loaders.",
-                    "🏭 Factory Scrap:\nBuying closed mills and heavy structures.",
-                    "🔩 Metal & Scrap:\nBulk purchase of Copper, Brass, and Iron.",
-                    "🏠 Home/Office:\nScrap for old AC, Fridge, and furniture."
-                ] 
-            }
-        };
-        function toggleSet() { let p = document.getElementById('settings-pane'); p.style.display = (p.style.display === 'block') ? 'none' : 'block'; }
-        function changeL(l) { 
-            cur = l; 
-            document.getElementById('waBtn').innerText=content[l].wa; 
-            document.getElementById('igBtn').innerText=content[l].ig; 
-            document.getElementById('drBtn').innerText=content[l].dr; 
-            document.getElementById('servTitle').innerText=content[l].st; 
-            for(let i=0;i<6;i++) document.getElementById('b'+i).innerText=content[l].boxes[i]; 
-            toggleSet(); 
-        }
-        function showInfo(i) { document.getElementById('infoBody').innerText = content[cur].info[i]; document.getElementById('detail-modal').style.display = 'flex'; }
+        const info = [
+            "स्क्रैप गाड़ियाँ: 15 साल से पुरानी गाड़ी का उचित दाम।",
+            "रनिंग गाड़ियाँ: पुरानी गाड़ियों की खरीद-फरोख्त।",
+            "हैवी मशीनरी: जेसीबी और ट्रक स्क्रैप।",
+            "फैक्ट्री स्क्रैप: बंद मिलों का सामान।"
+        ];
+        function showInfo(i) { document.getElementById('infoBody').innerText = info[i]; document.getElementById('detail-modal').style.display = 'flex'; }
         function closeInfo() { document.getElementById('detail-modal').style.display = 'none'; }
     </script>
 </body>
